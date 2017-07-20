@@ -13,7 +13,7 @@ import paf.garikaadventure.Characters.Foe;
 import paf.garikaadventure.Characters.Player;
 import paf.garikaadventure.Items.Weapons.WoodenAxe;
 
-public class MainActivity extends FragmentActivity {
+public class FightActivity extends FragmentActivity {
 
     private Player player;
     private Foe foe;
@@ -44,8 +44,8 @@ public class MainActivity extends FragmentActivity {
         infoFight = (TextView) findViewById(R.id.infoFight);
         attackButton.setOnClickListener(playerAttack);
 
-        Fragment characterFragment = CharacterFragment.newInstance(player, foe);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment characterFragment = CharacterFragment.newInstance(player, foe);
         ft.add(R.id.FoeFragmtContainer, characterFragment);
         ft.commit();
     }

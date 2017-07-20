@@ -11,20 +11,21 @@ import paf.garikaadventure.Items.Weapons.Weapon;
 public class Character {
 
     private String name;
-    private int lifePoint;
-    private int damage;
-    private int armor;
+
+    private int healthPoint;
+    private int stamina;
+    private int attack;
+    private int parry;
 
     private int strength;
     private int intelligence;
     private int agility;
     private int charisma;
+    private int bravery;
 
-    private int attack;
-    private int parry;
+    private int damage;
+    private int armor;
 
-    private int stamina;
-    private int concentration;
     private Character target;
 
     private Weapon weapon;
@@ -42,16 +43,16 @@ public class Character {
     }
 
     public void looseLife (){
-        int currentLife = lifePoint - (target.attack() - armor);
+        int currentLife = healthPoint - (target.attack() - armor);
         setLifePoint(currentLife);
     }
 
-    public int getLifePoint() {
-        return lifePoint;
+    public int getHealthPoint() {
+        return healthPoint;
     }
 
     public void setLifePoint(int lifePoint) {
-        this.lifePoint = lifePoint;
+        this.healthPoint = lifePoint;
         if(lifePoint == 0){
             setAlive(false);
         }
@@ -104,14 +105,6 @@ public class Character {
 
     public void setStamina(int stamina) {
         this.stamina = stamina;
-    }
-
-    public int getConcentration() {
-        return concentration;
-    }
-
-    public void setConcentration(int concentration) {
-        this.concentration = concentration;
     }
 
     public Weapon getWeapon() {
@@ -176,6 +169,14 @@ public class Character {
 
     public void setParry(int parry) {
         this.parry = parry;
+    }
+
+    public int getBravery() {
+        return bravery;
+    }
+
+    public void setBravery(int bravery) {
+        this.bravery = bravery;
     }
 
 }

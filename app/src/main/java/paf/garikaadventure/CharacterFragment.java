@@ -17,15 +17,15 @@ import paf.garikaadventure.Characters.Player;
 
 public class CharacterFragment extends Fragment {
 
-    Player player;
-    Foe foe;
-    TextView infoFight;
+    private Player player;
+    private Foe foe;
+    private TextView infoFight;
 
-    public static CharacterFragment newInstance (Player player, Foe foe, TextView infoFight) {
+    public static CharacterFragment newInstance (Player player, Foe foe) {
         CharacterFragment characterFragment = new CharacterFragment();
-        characterFragment.setPlayer(player);
-        characterFragment.setFoe(foe);
-        characterFragment.setInfoFight(infoFight);
+
+        characterFragment.player = player;
+        characterFragment.foe = foe;
         return characterFragment;
     }
 
@@ -33,10 +33,12 @@ public class CharacterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        View rootview = inflater.inflate(R.layout.fragment_character_card, container, false);
+
         player = getPlayer();
         foe = getFoe();
 
-        return inflater.inflate(R.layout.fragment_character_card, container, false);
+        return rootview;
     }
 
     @Override
@@ -49,6 +51,7 @@ public class CharacterFragment extends Fragment {
 
     private View.OnClickListener foeAttack = new View.OnClickListener() {
         public void onClick(View v) {
+
             foe.attack();
             infoFight.setText("Foe has attack and gave " + foe.getDamage() + " damage" );
             player.looseLife();
@@ -57,6 +60,8 @@ public class CharacterFragment extends Fragment {
             }
         }
     };
+
+    //A supprimer
 
     public Player getPlayer() {
         return player;
