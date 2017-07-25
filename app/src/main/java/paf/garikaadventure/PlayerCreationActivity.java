@@ -1,12 +1,13 @@
 package paf.garikaadventure;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.FrameLayout;
+
+import java.util.Random;
 
 import paf.garikaadventure.Characters.Player;
 
@@ -14,30 +15,97 @@ import paf.garikaadventure.Characters.Player;
  * Created by PAF on 15/07/2017.
  */
 
-public class PlayerCreationActivity extends FragmentActivity {
+public class PlayerCreationActivity extends FragmentActivity implements View.OnClickListener{
 
+    private final int MIN = 1;
+    private final int MAX = 6;
+    private Random rand;
     private Player player;
-    private String dialogTitle = "Change character";
+    private Button skillGenerator;
+    private Button validate;
+    private FrameLayout pictureSelection;
+    private PlayerSheetFragment playerSheet;
+    private PlayerPictureSelectionFragment pictureSelectionFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_creation);
+//        rand = new Random();
+//
+//        player = new Player();
+//        player.setWeapon(new WoodenAxe());
+//        skillGenerator = (Button) findViewById(R.id.skillGenerator);
+////        pictureSelection = (FrameLayout) findViewById(R.id.pictureSelectionFL);
+//
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        playerSheet = PlayerSheetFragment.newInstance(player);
+//        ft.add(R.id.fragContainer, playerSheet);
+//        ft.commit();
+//
+//        skillGenerator = (Button) findViewById(R.id.skillGenerator);
+//        validate = (Button) findViewById(R.id.validate);
+//
+//        generateSkills();
+    }
 
-        player = new Player();
-        TextView nameEditor = (TextView) findViewById(R.id.playerName);
+    public void generateSkills() {
+        player.setLifePoint((rand.nextInt(35 - 20 + 1) + 20));
+        player.setStamina((rand.nextInt(MAX - MIN + 1) + MIN)+7);
+        player.setAttack((rand.nextInt(MAX - MIN + 1) + MIN)+7);
+        player.setParry((rand.nextInt(MAX - MIN + 1) + MIN)+7);
+        player.setIntelligence((rand.nextInt(MAX - MIN + 1) + MIN)+7);
+        player.setCharisma((rand.nextInt(MAX - MIN + 1) + MIN)+7);
+        player.setStrength((rand.nextInt(MAX - MIN + 1) + MIN)+7);
+        player.setBravery((rand.nextInt(MAX - MIN + 1) + MIN)+7);
+        player.setAgility((rand.nextInt(MAX - MIN + 1) + MIN)+7);
+
+    }
+
+    public void startPictureSelectionFragment () {
+
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        FrameLayout fl = (FrameLayout) findViewById(R.id.fragContainer);
+//        pictureSelectionFragment = PlayerPictureSelectionFragment.newInstance(playerSheet);
+//        ft.add(R.id.pictureSelectionFL, pictureSelectionFragment);
+//        validate.setVisibility(View.GONE);
+//        skillGenerator.setVisibility(View.GONE);;
+//        skillGenerator.setVisibility(View.GONE);
+//        fl.setVisibility(View.GONE);
+    }
+
+    public void destroyPictureSelectionFragment () {
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Fragment playerSheet = PlayerSheetFragment.newInstance(player);
-        ft.add(R.id.fragContainer, playerSheet);
-        ft.commit();
+        if(pictureSelection != null) {
+            ft.remove(pictureSelectionFragment).commit();
+        }
     }
 
 
-    private View.OnClickListener diplayDialogNameEditor = new View.OnClickListener() {
-        public void onClick(View v) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(PlayerCreationActivity.this);
-            builder.setTitle(dialogTitle);
-        }
-    };
+    @Override
+    public void onClick(View v) {
+//        switch (v.getId()){
+//            case R.id.skillGenerator :
+//                generateSkills();
+//                playerSheet.getSkillViewFragment().setTextSkillView();
+//                break;
+//
+//            case R.id.validate :
+//                Intent intent = new Intent(PlayerCreationActivity.this, PlayerMenuActivity.class);
+//                intent.putExtra("player", player);
+//                startActivity(intent);
+//                break;
+//
+//            case R.id.playerImage :
+//                    startPictureSelectionFragment();
+//                break;
+//
+//            case R.id.picturesHolder : {
+//                destroyPictureSelectionFragment();
+//                break;
+//            }
+
+//        }
+    }
 }

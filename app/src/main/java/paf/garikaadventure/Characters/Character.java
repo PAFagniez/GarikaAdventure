@@ -9,7 +9,6 @@ import paf.garikaadventure.Items.Weapons.Weapon;
  */
 
 public class Character {
-
     private String name;
 
     private int healthPoint;
@@ -178,5 +177,6 @@ public class Character {
     public void setBravery(int bravery) {
         this.bravery = bravery;
     }
+
 
 }
