@@ -1,5 +1,6 @@
 package paf.garikaadventure;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.widget.FrameLayout;
 import java.util.Random;
 
 import paf.garikaadventure.Characters.Player;
+import paf.garikaadventure.Items.Weapons.WoodenAxe;
 
 /**
  * Created by PAF on 15/07/2017.
@@ -31,22 +33,22 @@ public class PlayerCreationActivity extends FragmentActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_creation);
-//        rand = new Random();
-//
-//        player = new Player();
-//        player.setWeapon(new WoodenAxe());
-//        skillGenerator = (Button) findViewById(R.id.skillGenerator);
-////        pictureSelection = (FrameLayout) findViewById(R.id.pictureSelectionFL);
-//
-//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        playerSheet = PlayerSheetFragment.newInstance(player);
-//        ft.add(R.id.fragContainer, playerSheet);
-//        ft.commit();
-//
-//        skillGenerator = (Button) findViewById(R.id.skillGenerator);
-//        validate = (Button) findViewById(R.id.validate);
-//
-//        generateSkills();
+        rand = new Random();
+
+        player = new Player();
+        player.setWeapon(new WoodenAxe());
+        skillGenerator = (Button) findViewById(R.id.generateSkill);
+//        pictureSelection = (FrameLayout) findViewById(R.id.pictureSelectionFL);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        playerSheet = PlayerSheetFragment.newInstance(player);
+        ft.add(R.id.fragContainer, playerSheet);
+        ft.commit();
+
+        skillGenerator = (Button) findViewById(R.id.generateSkill);
+        validate = (Button) findViewById(R.id.validate);
+
+        generateSkills();
     }
 
     public void generateSkills() {
@@ -64,14 +66,14 @@ public class PlayerCreationActivity extends FragmentActivity implements View.OnC
 
     public void startPictureSelectionFragment () {
 
-//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        FrameLayout fl = (FrameLayout) findViewById(R.id.fragContainer);
-//        pictureSelectionFragment = PlayerPictureSelectionFragment.newInstance(playerSheet);
-//        ft.add(R.id.pictureSelectionFL, pictureSelectionFragment);
-//        validate.setVisibility(View.GONE);
-//        skillGenerator.setVisibility(View.GONE);;
-//        skillGenerator.setVisibility(View.GONE);
-//        fl.setVisibility(View.GONE);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        FrameLayout fl = (FrameLayout) findViewById(R.id.fragContainer);
+        pictureSelectionFragment = PlayerPictureSelectionFragment.newInstance(playerSheet);
+        ft.add(R.id.pictureHolderFL, pictureSelectionFragment);
+        validate.setVisibility(View.GONE);
+        skillGenerator.setVisibility(View.GONE);;
+        skillGenerator.setVisibility(View.GONE);
+        fl.setVisibility(View.GONE);
     }
 
     public void destroyPictureSelectionFragment () {
@@ -85,27 +87,27 @@ public class PlayerCreationActivity extends FragmentActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-//        switch (v.getId()){
-//            case R.id.skillGenerator :
-//                generateSkills();
-//                playerSheet.getSkillViewFragment().setTextSkillView();
-//                break;
-//
-//            case R.id.validate :
-//                Intent intent = new Intent(PlayerCreationActivity.this, PlayerMenuActivity.class);
-//                intent.putExtra("player", player);
-//                startActivity(intent);
-//                break;
-//
-//            case R.id.playerImage :
-//                    startPictureSelectionFragment();
-//                break;
-//
-//            case R.id.picturesHolder : {
-//                destroyPictureSelectionFragment();
-//                break;
-//            }
+        switch (v.getId()){
+            case R.id.generateSkill :
+                generateSkills();
+                playerSheet.getSkillViewFragment().setTextSkillView();
+                break;
 
-//        }
+            case R.id.validate :
+                Intent intent = new Intent(PlayerCreationActivity.this, PlayerMenuActivity.class);
+                intent.putExtra("player", player);
+                startActivity(intent);
+                break;
+
+            case R.id.playerImage :
+                    startPictureSelectionFragment();
+                break;
+
+            case R.id.pictureHolderFL :
+                destroyPictureSelectionFragment();
+                break;
+            }
+
+
     }
 }

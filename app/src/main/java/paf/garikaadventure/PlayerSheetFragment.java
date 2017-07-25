@@ -1,8 +1,10 @@
 package paf.garikaadventure;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +43,7 @@ public class PlayerSheetFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootview = inflater.inflate(R.layout.fragment_player_sheet, container, false);
-//        heroName = (TextView) rootview.findViewById(R.id.heroName);
+        heroName = (TextView) rootview.findViewById(R.id.playerName);
         heroName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +65,7 @@ public class PlayerSheetFragment extends Fragment {
 
     public void startDialogChangeName(final String error) {
 
-       /* LayoutInflater linf = getActivity().getLayoutInflater();
+        LayoutInflater linf = getActivity().getLayoutInflater();
         final View inflator = linf.inflate(R.layout.dialog_change_name, null);
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
 
@@ -88,7 +90,7 @@ public class PlayerSheetFragment extends Fragment {
                 }
             }
         });
-        alert.show();*/
+        alert.show();
     }
 
     public void setTextSkillView(){
