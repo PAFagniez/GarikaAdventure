@@ -84,7 +84,6 @@ public class PlayerCreationActivity extends FragmentActivity implements View.OnC
         }
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
