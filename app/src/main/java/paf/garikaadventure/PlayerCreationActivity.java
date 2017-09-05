@@ -1,6 +1,5 @@
 package paf.garikaadventure;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -93,9 +92,9 @@ public class PlayerCreationActivity extends FragmentActivity implements View.OnC
                 break;
 
             case R.id.validate :
-                Intent intent = new Intent(PlayerCreationActivity.this, PlayerMenuActivity.class);
-                intent.putExtra("player", player);
-                startActivity(intent);
+           //     Intent intent = new Intent(PlayerCreationActivity.this, PlayerMenuActivity.class);
+         //       intent.putExtra("player", player);
+       //         startActivity(intent);
                 break;
 
             case R.id.playerImage :
